@@ -1,0 +1,13 @@
+import qrcode
+
+data = input('Enter the text or URL: ').strip()
+filename = input('Enter the filename: ').strip()
+if not filename.endswith('.png'):
+    filename += '.png'
+#strip() removes any leading or trailing whitespace from the input
+
+qr= qrcode.QRCode(box_size=10, border=4)
+qr.add_data(data)
+image = qr.make_image(fill_color="black", back_color="white")
+image.save(filename)
+print(f'QR code saved as {filename}')
